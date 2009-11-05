@@ -1,0 +1,27 @@
+
+parrot-MT19937 : Mersenne Twisted pseudorandom number generator
+===============================================================
+
+Description
+------------
+
+This is a PIR version of the C-program for MT19937.
+
+The MT19937 algorithm was created by Makoto Matsumoto and Takuji Nishimura.
+
+See http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/emt.html and
+http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/MT2002/emt19937ar.html.
+
+Build/Install
+-------------
+
+    $ parrot Configure.pir
+    $ make
+    $ make test
+    $ sudo make install
+
+Links
+-----
+
+The project is hosted at http://github.com/fperrad/parrot-MT19937/.
+
