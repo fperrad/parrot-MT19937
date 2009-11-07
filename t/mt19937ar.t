@@ -106,6 +106,8 @@ t/mt19937ar.t - Math::Random::MT tests
     fh = new 'FileHandle'
     .local string ref
     ref = fh.'readall'('t/mt19937ar.txt')
+    $P0 = split "\r\n", ref     # hack for Windows
+    ref = join "\n", $P0
     fh = new 'StringHandle'
     fh.'open'('output', 'w')
     generate_output(fh)
