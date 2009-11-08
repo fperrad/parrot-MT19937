@@ -12,10 +12,6 @@ No Configure step, no Makefile generated.
 Currently, the only dependency is 'prove' (in 'test' step).
 
 Note: this setup.pir is a toy for Plumage.
-A final solution is a setup.nqp which uses a distutils library written in NQP
-and available in or with Plumage.
-
-See: L<http://docs.python.org/distutils/>
 
 =head1 USAGE
 
@@ -28,175 +24,34 @@ See: L<http://docs.python.org/distutils/>
 .sub 'main' :main
     .param pmc args
     $S0 = shift args
-    $I0 = args
-    unless $I0 == 0 goto L0
-    build()
-    end
-  L0:
-    .local string cmd
-    cmd = shift args
-    unless cmd == 'build' goto L1
-    build()
-    end
-  L1:
-    unless cmd == 'clean' goto L2
-    clean()
-    end
-  L2:
-    unless cmd == 'install' goto L3
-    install()
-    end
-  L3:
-    unless cmd == 'test' goto L4
-    test()
-    end
-  L4:
-    unless cmd == 'uninstall' goto L5
-    uninstall()
-    end
-  L5:
-    usage()
-    end
-.end
+    load_bytecode 'distutils.pbc'
 
-.sub 'build'
-    $I0 = exist('Math/Random/mt19937ar.pbc')
-    if $I0 goto L1
-    .local string cmd
-    cmd = get_parrot()
-    cmd .= " -o Math/Random/mt19937ar.pbc Math/Random/mt19937ar.pir"
-    system(cmd)
-  L1:
-.end
-
-.sub 'clean'
-    unlink('Math/Random/mt19937ar.pbc')
-.end
-
-.sub 'install'
-    build()
-    $S0 = get_libdir()
-    $S0 .= "/library/Math/Random"
-    mkpath($S0)
-    $S0 .= '/mt19937ar.pbc'
-    cp('Math/Random/mt19937ar.pbc', $S0)
-.end
-
-.sub 'test'
-    build()
-    .local string cmd
-    cmd = "prove --exec="
+    $P0 = new 'Hash'
+    $P1 = new 'Hash'
+    $P2 = split " ", "Math/Random/mt19937ar.pir"
+    $P1['Math/Random/mt19937ar.pbc'] = $P2
+    $P0['pbc_pir'] = $P1
     $S0 = get_parrot()
-    cmd .= $S0
-    cmd .= " t/*.t"
-    system(cmd)
+    $P0['prove_exec'] = $S0
+    $P3 = split " ", "Math/Random/mt19937ar.pbc"
+    $P0['inst_lib'] = $P3
+    .tailcall setup(args :flat, $P0 :flat :named)
 .end
 
-.sub 'uninstall'
-    $S0 = get_libdir()
-    $S0 .= "/library/Math/Random/mt19937ar.pbc"
-    unlink($S0)
-.end
+=pod p6
 
-.sub 'usage'
-    say <<'USAGE'
-    Following targets are available for the user:
+    setup(
+        :pbc_pir( {
+            'Math/Random/mt19937ar.pbc' => [ 'Math/Random/mt19937ar.pir' ],
+        } ),
+        :prove_exec( get_parrot() ),
+        :inst_lib( [ 'Math/Random/mt19937ar.pbc' ] )
+    );
 
-        build:          mt19937ar.pbc
+=cut
 
-        test:           Run the test suite.
-
-        install:        Install the library.
-
-        uninstall:      Uninstall the library.
-
-        clean:          Basic cleaning up.
-
-        help:           Print this help message.
-USAGE
-.end
-
-.sub 'system' :anon
-    .param string cmd
-    say cmd
-    $I0 = spawnw cmd
-.end
-
-.include 'stat.pasm'
-
-.sub 'exist' :anon
-    .param string filename
-    $I0 = stat filename, .STAT_EXISTS
-    .return ($I0)
-.end
-
-.sub 'mkpath' :anon
-    .param string pathname
-    $I1 = 1
-  L1:
-    $I1 = index pathname, '/', $I1
-    if $I1 < 0 goto L2
-    $S0 = substr pathname, 0, $I1
-    inc $I1
-    $I0 = exist($S0)
-    if $I0 goto L1
-    mkdir($S0)
-    goto L1
-  L2:
-    $I0 = exist(pathname)
-    if $I0 goto L3
-    mkdir(pathname)
-  L3:
-.end
-
-.sub 'mkdir' :anon
-    .param string dirname
-    $P0 = new 'OS'
-    $I1 = 0o775
-    $P0.'mkdir'(dirname, $I1)
-.end
-
-.sub 'cp' :anon
-    .param string src
-    .param string dst
-    $P0 = new 'FileHandle'
-    $S0 = $P0.'readall'(src)
-    $P0.'open'(dst, 'w')
-    $P0.'puts'($S0)
-    $P0.'close'()
-.end
-
-.sub 'unlink' :anon
-    .param string filename
-    new $P0, 'OS'
-    push_eh _handler
-    $P0.'rm'(filename)
-    pop_eh
-  _handler:
-    .return ()
-.end
-
-.include 'iglobals.pasm'
-
-.sub 'get_config' :anon
-    $P0 = getinterp
-    $P1 = $P0[.IGLOBALS_CONFIG_HASH]
-    .return ($P1)
-.end
-
-.sub 'get_parrot' :anon
-    $P0 = get_config()
-    $S0 = $P0['bindir']
-    $S0 .= '/parrot'
-    $S1 = $P0['exe']
-    $S0 .= $S1
-    .return ($S0)
-.end
-
-.sub 'get_libdir' :anon
-    $P0 = get_config()
-    $S0 = $P0['libdir']
-    $S1 = $P0['versiondir']
-    $S0 .= $S1
-    .return ($S0)
-.end
+# Local Variables:
+#   mode: pir
+#   fill-column: 100
+# End:
+# vim: expandtab shiftwidth=4 ft=pir:
