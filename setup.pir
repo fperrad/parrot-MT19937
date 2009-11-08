@@ -28,13 +28,11 @@ Note: this setup.pir is a toy for Plumage.
 
     $P0 = new 'Hash'
     $P1 = new 'Hash'
-    $P2 = split " ", "Math/Random/mt19937ar.pir"
-    $P1['Math/Random/mt19937ar.pbc'] = $P2
+    $P1['Math/Random/mt19937ar.pbc'] = 'Math/Random/mt19937ar.pir'
     $P0['pbc_pir'] = $P1
     $S0 = get_parrot()
     $P0['prove_exec'] = $S0
-    $P3 = split " ", "Math/Random/mt19937ar.pbc"
-    $P0['inst_lib'] = $P3
+    $P0['inst_lib'] = 'Math/Random/mt19937ar.pbc'
     $P4 = new 'Hash'
     $P4['Math/Random/mt19937ar.html'] = 'Math/Random/mt19937ar.pir'
     $P0['html_pod'] = $P4
@@ -45,10 +43,10 @@ Note: this setup.pir is a toy for Plumage.
 
     setup(
         :pbc_pir( {
-            'Math/Random/mt19937ar.pbc' => [ 'Math/Random/mt19937ar.pir' ],
+            'Math/Random/mt19937ar.pbc' => 'Math/Random/mt19937ar.pir',
         } ),
         :prove_exec( get_parrot() ),
-        :inst_lib( [ 'Math/Random/mt19937ar.pbc' ] ),
+        :inst_lib( 'Math/Random/mt19937ar.pbc' ),
         :html_pod( {
             'Math/Random/mt19937ar.html' => 'Math/Random/mt19937ar.pir',
         } )
