@@ -26,16 +26,24 @@ Note: this setup.pir is a toy for Plumage.
     $S0 = shift args
     load_bytecode 'distutils.pbc'
 
+    # build
     $P0 = new 'Hash'
     $P1 = new 'Hash'
     $P1['Math/Random/mt19937ar.pbc'] = 'Math/Random/mt19937ar.pir'
     $P0['pbc_pir'] = $P1
+
+    # test
     $S0 = get_parrot()
     $P0['prove_exec'] = $S0
+
+    # install
     $P0['inst_lib'] = 'Math/Random/mt19937ar.pbc'
+
+    # build doc
     $P4 = new 'Hash'
     $P4['Math/Random/mt19937ar.html'] = 'Math/Random/mt19937ar.pir'
     $P0['html_pod'] = $P4
+
     .tailcall setup(args :flat, $P0 :flat :named)
 .end
 
