@@ -15,14 +15,7 @@ http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/MT2002/emt19937ar.html.
 Build & Install
 ---------------
 
-    $ parrot Configure.pir
-    $ make
-    $ make test
-    $ sudo make install
-
-or
-
-    $ parrot setup.pir build
+    $ parrot setup.pir
     $ parrot setup.pir test
     $ sudo parrot setup.pir install
 
