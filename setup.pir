@@ -11,11 +11,9 @@ No Configure step, no Makefile generated.
 
 Currently, the only dependency is 'prove' (in 'test' step).
 
-Note: this setup.pir is a toy for Plumage.
-
 =head1 USAGE
 
-    $ parrot setup.pir build
+    $ parrot setup.pir
     $ parrot setup.pir test
     $ sudo parrot setup.pir install
 
