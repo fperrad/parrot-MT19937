@@ -2,3 +2,6 @@
 Makefile
 *.pbc
 *.html
+
+*.iss
+setup-*.exe
