@@ -13,7 +13,7 @@
             "uri"  : "http://www.perlfoundation.org/artistic_license_2_0"
         },
         "copyright_holder" : "Parrot Foundation",
-        "generated_by"     : "Francois Perrad <francois.perrad@gadz.org>",
+        "generated_by"     : "distutils",
         "keywords"         : ["random", "prng"],
         "description"      : "Mersenne Twisted pseudorandom number generator in PIR for Parrot VM."
     },
@@ -50,5 +50,3 @@
         }
     }
 }
-
-
