@@ -1,7 +1,12 @@
 
+MANIFEST
 Makefile
 *.pbc
 *.html
 
 *.iss
 setup-*.exe
+
+*.tar.gz
+*.zip
+*.patch
