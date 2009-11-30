@@ -56,6 +56,9 @@ Currently, the only dependency is 'prove' (in 'test' step).
     $P4['Math/Random/mt19937ar.html'] = 'Math/Random/mt19937ar.pir'
     $P0['html_pod'] = $P4
 
+    # dist
+    $P0['manifest_includes'] = 't/mt19937ar.txt'
+
     .tailcall setup(args :flat, $P0 :flat :named)
 .end
 
