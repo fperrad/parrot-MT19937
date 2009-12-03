@@ -34,7 +34,6 @@ Currently, the only dependency is 'prove' (in 'test' step).
     $P0['license_type'] = 'Artistic License 2.0'
     $P0['license_uri'] = 'http://www.perlfoundation.org/artistic_license_2_0'
     $P0['copyright_holder'] = 'Parrot Foundation'
-    $P0['generated_by'] = 'Francois Perrad <francois.perrad@gadz.org>'
     $P0['checkout_uri'] = 'git://github.com/fperrad/parrot-MT19937.git'
     $P0['browser_uri'] = 'http://github.com/fperrad/parrot-MT19937'
     $P0['project_uri'] = 'http://github.com/fperrad/parrot-MT19937'
