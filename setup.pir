@@ -57,6 +57,7 @@ Currently, the only dependency is 'prove' (in 'test' step).
 
     # dist
     $P0['manifest_includes'] = 't/mt19937ar.txt'
+    $P0['doc_files'] = 'README'
 
     .tailcall setup(args :flat, $P0 :flat :named)
 .end
