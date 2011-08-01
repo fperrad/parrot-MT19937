@@ -1,4 +1,3 @@
-# Copyright (C) 2008-2009, Parrot Foundation.
 
 =head1 NAME
 
@@ -63,7 +62,7 @@ L<http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/MT2002/emt19937ar.html>.
 
 =over 4
 
-=item C<init_genrand (seed)>
+=item B<init_genrand (seed)>
 
 initializes the state vector by using one "seed", which may be zero.
 
@@ -96,7 +95,7 @@ initializes the state vector by using one "seed", which may be zero.
 .end
 
 
-=item C<init_by_array (init_key)>
+=item B<init_by_array (init_key)>
 
 initializes the state vector by using an array.
 
@@ -178,7 +177,7 @@ After initialization, the following type of pseudorandom numbers are available.
 
 =over 4
 
-=item C<genrand_int32 ()>
+=item B<genrand_int32 ()>
 
 generates a random number on [0,0xffffffff]-interval
 
@@ -276,7 +275,7 @@ generates a random number on [0,0xffffffff]-interval
 .end
 
 
-=item C<genrand_int31 ()>
+=item B<genrand_int31 ()>
 
 generates a random number on [0,0x7fffffff]-interval
 
@@ -289,7 +288,7 @@ generates a random number on [0,0x7fffffff]-interval
 .end
 
 
-=item C<genrand_real1 ()>
+=item B<genrand_real1 ()>
 
 generates a random number on [0,1]-real-interval
 
@@ -306,7 +305,7 @@ generates a random number on [0,1]-real-interval
 .end
 
 
-=item C<genrand_real2 ()>
+=item B<genrand_real2 ()>
 
 generates a random number on [0,1)-real-interval
 
@@ -323,7 +322,7 @@ generates a random number on [0,1)-real-interval
 .end
 
 
-=item C<genrand_real3 ()>
+=item B<genrand_real3 ()>
 
 generates a random number on (0,1)-real-interval
 
@@ -341,7 +340,7 @@ generates a random number on (0,1)-real-interval
 .end
 
 
-=item C<genrand_res53 ()>
+=item B<genrand_res53 ()>
 
 generates a random number on [0,1) with 53-bit resolution
 
@@ -363,9 +362,16 @@ generates a random number on [0,1) with 53-bit resolution
 
 =back
 
-=head1 AUTHORS
+=head1 AUTHOR
 
 Francois Perrad
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright 2008-2011, Parrot Foundation.
+
+This program is free software; you may redistribute it and/or modify
+it under the same terms as Parrot itself.
 
 =cut
 
