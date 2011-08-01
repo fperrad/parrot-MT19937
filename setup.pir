@@ -55,6 +55,11 @@ Currently, the only dependency is 'prove' (in 'test' step).
     $P3['Math/Random/mt19937ar.html'] = 'Math/Random/mt19937ar.pir'
     $P0['html_pod'] = $P3
 
+    # build man
+    $P4 = new 'Hash'
+    $P4['man/man3/mt19937ar.3'] = 'Math/Random/mt19937ar.pir'
+    $P0['man_pod'] = $P4
+
     # dist
     $P0['manifest_includes'] = 't/mt19937ar.txt'
     $P0['doc_files'] = 'README'
